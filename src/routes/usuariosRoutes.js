@@ -1,9 +1,11 @@
+const { buscarProdutos } = require("../controller/produtosController");
 const { executarSQL } = require("../services");
+
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-    res.send(await executarSQL("SELECT * FROM produtos;"));
+    res.send(await executarSQL ("SELECT * FROM produtos;"));
 });
 
 router.get("/:id", (req, res) => {
