@@ -1,5 +1,5 @@
-const { buscarProdutos, buscarUmProduto, criarProduto, apagarProduto } = require("../controller/produtosController");
-const { executarSQL } = require("../services");
+const { buscarProdutos, buscarUmProduto, criarProduto, apagarProduto, editarProduto } = require("../controller/produtosController");
+
 
 const router = require("express").Router();
 
@@ -15,8 +15,8 @@ router.post("/", async (req, res) => {
     res.send(await criarProduto(req.body));
 });
 
-router.put("/:id", (req, res) => {
-    res.send(`Edita um produto com o id: ${req.params.id}`);
+router.put("/:id", async (req, res) => {
+    res.send(await editarProduto(req.params.id, req.body));
 });
 
 router.delete("/:id", async(req, res) => {

@@ -1,4 +1,5 @@
-const { buscarProdutos } = require("../controller/produtosController");
+
+const { criarUsuario } = require("../controller/usuariosController");
 const { executarSQL } = require("../services");
 
 
@@ -12,8 +13,8 @@ router.get("/:id", (req, res) => {
     res.send(`Busca o usuário com o id: ${req.params.id}`);
 });
 
-router.post("/", (req, res) => {
-    res.send("Cria um usuário");
+router.post("/", async (req, res) => {
+    res.send(await criarUsuario(req.body));
 });
 
 router.put("/:id", (req, res) => {
